@@ -11,20 +11,21 @@ import java.util.Date;
 import java.util.List;
 
 import com.newlecture.web.entity.Notice;
+import com.newlecture.web.entity.NoticeView;
 
 public class NoticeService {
-	public List<Notice> getNoticeList(){
+	public List<NoticeView> getNoticeList(){
 		return getNoticeList("title", "", 1);
 	}
 	
-	public List<Notice> getNoticeList(int page){
+	public List<NoticeView> getNoticeList(int page){
 		return getNoticeList("title", "", page);
 	}
 	
-	public List<Notice> getNoticeList(String field/*TITLE, WRITER_ID*/, String query/*A*/, int page){
-		List<Notice> list = new ArrayList<>();
+	public List<NoticeView> getNoticeList(String field/*TITLE, WRITER_ID*/, String query/*A*/, int page){
+		List<NoticeView> list = new ArrayList<>();
 		String sql = "SELECT * FROM ("
-				+ "SELECT ROWNUM NUM, N.* FROM (SELECT * FROM NOTICE WHERE " +field+ " LIKE ? ORDER BY REGDATE DESC) N"
+				+ "SELECT ROWNUM NUM, N.* FROM (SELECT * FROM NOTICE_VIEW WHERE " +field+ " LIKE ? ORDER BY REGDATE DESC) N"
 				+ ") "
 				+ "WHERE NUM BETWEEN ? AND ?";
 		
@@ -52,16 +53,18 @@ public class NoticeService {
 				String writerId = rs.getString("WRITER_ID");
 				String hit = rs.getString("HIT");
 				String files = rs.getString("FILES");
-				String content = rs.getString("CONTENT");
-
-			Notice notice = new Notice(
+				//String content = rs.getString("CONTENT");
+				int cmtCount = rs.getInt("CMT_COUNT");
+				
+			NoticeView notice = new NoticeView(
 								id,
 								title,
 								regDate,
 								writerId,
 								hit,
 								files,
-								content
+								//content,
+								cmtCount
 							);
 				list.add(notice);
 			}
@@ -178,7 +181,7 @@ try {
 				+ "    WHERE REGDATE > (SELECT REGDATE FROM NOTICE WHERE ID=?) "
 				+ "    AND ROWNUM = 1"
 				+ ")";
-String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 		
 
 		try {
