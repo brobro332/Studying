@@ -1,6 +1,10 @@
 package com.newlecture.web.controller.admin.notice;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -8,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import com.newlecture.web.entity.Notice;
 import com.newlecture.web.service.NoticeService;
@@ -32,15 +37,49 @@ public class RegController extends HttpServlet{
 		 if(isOpen != null)
 			 pub = true;
 		 
-		 Notice notice = new Notice();
-		 notice.setTitle(title);
-		 notice.setContent(content);
-		 notice.setWriterId("newlec");
-		 notice.setPub(pub);
+		 Collection<Part> parts = request.getParts();
+		 StringBuilder builder = new StringBuilder();
 		 
-		 NoticeService service = new NoticeService();
-		 service.insertNotice(notice);
-	
-		 response.sendRedirect("list");
-	}
+		 for(Part p : parts) {
+			 if(!p.getName().equals("file")) continue;
+			 if(p.getSize() == 0) continue;
+			 
+			 Part filePart = p;
+			 String fileName = filePart.getSubmittedFileName();
+			 builder.append(fileName);
+			 builder.append(",");
+			 
+			 InputStream fis = filePart.getInputStream();
+		 
+			 String realPath = request.getServletContext().getRealPath("/upload");
+		 
+			 File path = new File(realPath);
+			 if(!path.exists())
+				 path.mkdirs();
+			 
+			 String filePath = realPath + File.separator + fileName;
+			 FileOutputStream fos = new FileOutputStream(filePath);
+			 
+			 byte[] buf = new byte[1024];
+			 int size = 0;
+			 while((size = fis.read(buf)) != -1)
+				 fos.write(buf,0,size);
+		 
+			 fos.close();
+			 fis.close();
+		 }
+		builder.delete(builder.length()-1,builder.length()); 
+		
+		Notice notice = new Notice();
+		notice.setTitle(title);
+		notice.setContent(content);
+		notice.setWriterId("newlec");
+		notice.setPub(pub);
+		notice.setFiles(builder.toString());
+			 
+		NoticeService service = new NoticeService();
+		int result = service.insertNotice(notice);
+		
+		response.sendRedirect("list");
+	 }
 }

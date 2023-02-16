@@ -130,7 +130,7 @@
                 <nav class="menu text-menu">
                     <h1>알림관리</h1>
                     <ul>
-                        <li><a href="/admin/board/notice/list.html">공지사항</a></li>
+                        <li><a href="/admin/board/notice/list">공지사항</a></li>
                     </ul>
                 </nav>
 
@@ -179,7 +179,7 @@
 									<c:if test="${fn:endsWith(fileName, '.zip')}">
 										<c:set var="style" value="font-weight:bold; color:red;" />
 									</c:if>
-									<a href="${fileName}" style="${style}">${fn:toUpperCase(fileName)}</a>
+									<a download href="/upload/${fileName}" style="${style}">${fn:toUpperCase(fileName)}</a>
 									<c:if test="${!st.last}">
 									/
 									</c:if>
