@@ -1,0 +1,13 @@
+package spring.di.ui;
+
+public class InlineExamConsole implements ExamConsole {
+
+	private Exam exam;
+		
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+
+	}
+
+}
