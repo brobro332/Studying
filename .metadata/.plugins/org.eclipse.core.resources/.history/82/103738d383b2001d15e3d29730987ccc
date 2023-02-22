@@ -1,0 +1,8 @@
+package spring.aop.advice;
+
+import org.springframework.aop.ThrowsAdvice;
+
+public class logAfterThrowingAdvice implements ThrowsAdvice {
+	
+
+}

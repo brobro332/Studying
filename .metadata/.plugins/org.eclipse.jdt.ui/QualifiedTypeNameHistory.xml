@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
-    <fullyQualifiedTypeName name="org.springframework.context.support.ClassPathXmlApplicationContext"/>
     <fullyQualifiedTypeName name="spring.di.ui.ExamConsole"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -14,4 +13,17 @@
     <fullyQualifiedTypeName name="spring.di.entity.NewlecExam"/>
     <fullyQualifiedTypeName name="spring.di.entity.Exam"/>
     <fullyQualifiedTypeName name="org.springframework.context.annotation.AnnotationConfigApplicationContext"/>
+    <fullyQualifiedTypeName name="spring.aop.entity.NewlecExam"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.Proxy"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.InvocationHandler"/>
+    <fullyQualifiedTypeName name="spring.aop.entity.Exam"/>
+    <fullyQualifiedTypeName name="org.springframework.context.support.ClassPathXmlApplicationContext"/>
+    <fullyQualifiedTypeName name="org.springframework.aop.framework.ProxyFactoryBean"/>
+    <fullyQualifiedTypeName name="org.aopalliance.intercept.MethodInterceptor"/>
+    <fullyQualifiedTypeName name="org.springframework.aop.MethodBeforeAdvice"/>
+    <fullyQualifiedTypeName name="org.springframework.aop.AfterReturningAdvice"/>
+    <fullyQualifiedTypeName name="org.springframework.aop.ThrowsAdvice"/>
+    <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
+    <fullyQualifiedTypeName name="org.springframework.aop.support.NameMatchMethodPointcut"/>
+    <fullyQualifiedTypeName name="org.springframework.aop.support.DefaultPointcutAdvisor"/>
 </qualifiedTypeNameHistroy>
