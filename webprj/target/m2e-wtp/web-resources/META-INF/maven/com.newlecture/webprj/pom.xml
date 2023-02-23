@@ -25,13 +25,14 @@
 	    	<artifactId>tomcat-api</artifactId>
 	    	<version>9.0.71</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-webmvc</artifactId>
-		    <version>6.0.5</version>
+		    <version>5.2.9.RELEASE</version>
 		</dependency>
-		
-	</dependencies>
+
+		<!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+  </dependencies>
 </project>
 
