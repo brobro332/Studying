@@ -13,9 +13,9 @@ public class IndexController implements Controller {
 		// TODO Auto-generated method stub
 		System.out.println("dfasdfd");
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("data", "Hello Spring MVC");
+		mv.addObject("data", "Hello Spring MVC~");
 		mv.setViewName("index.jsp");
-		
+		 
 		return mv;
 	}
 
