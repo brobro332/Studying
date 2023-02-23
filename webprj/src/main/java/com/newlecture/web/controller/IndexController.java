@@ -11,11 +11,10 @@ public class IndexController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("dfasdfd");
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("data", "Hello Spring MVC~");
-		mv.setViewName("index.jsp");
-		 
+		// mv.setViewName("/WEB-INF/view/index.jsp");
+		
 		return mv;
 	}
 
