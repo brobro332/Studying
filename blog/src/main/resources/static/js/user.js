@@ -1,6 +1,6 @@
 let index = {
 		init: function() {
-			$("#btn-save").on("click", ()=>{
+			$("#btn-save").on("click", ()=>{ // 화살표 함수를 쓰는 이유 : this를 바인딩 하기 위함
 				this.save();
 			});
 		},
@@ -15,7 +15,23 @@ let index = {
 			
 			// console.log(data);
 			
-			$.ajax().done().fail(); // 통신을 통해서 3개의 데이터를 JSON으로 변경하여 insert 요청
+			// ajax 호출시 default가 비동기 호출
+			// ajax 통신을 이용해서 3개의 데이터를 JSON으로 변경하여 insert 요청
+			// 회원가입 수행 요청 // 성공시 done 실행 // 실패시 fail 실행
+			// ajax가 통신을 성공하고 서버가 json을 리턴해주면 자동으로 Java 오브젝트로 변환해준다.
+			$.ajax({
+				type: "POST",
+				url: "/blog/api/user",
+				data: JSON.stringify(data), // HTTP body 데이터
+				contentType: "application/json; charset=utf-8", // body 데이터가 어떤 타입인지
+				dataType: "json" // 요청을 통해 서버에서 응답이 왔을 때 json이라면 -> javascript 오브젝트로 변경
+			}).done(function(resp) {
+				alert("회원가입이 완료되었습니다.");
+				// alert(resp)
+				location.href = "/blog";
+			}).fail(function(error) {
+				alert(JSON.stringify(error));
+			}); 
 		}
 }
 
