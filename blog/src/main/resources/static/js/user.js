@@ -24,14 +24,14 @@ let index = {
 			// ajax가 통신을 성공하고 서버가 json을 리턴해주면 자동으로 Java 오브젝트로 변환해준다.
 			$.ajax({
 				type: "POST",
-				url: "/blog/api/user",
+				url: "/api/user",
 				data: JSON.stringify(data), // HTTP body 데이터
 				contentType: "application/json; charset=utf-8", // body 데이터가 어떤 타입인지
 				dataType: "json" // 요청을 통해 서버에서 응답이 왔을 때 json이라면 -> javascript 오브젝트로 변경
 			}).done(function(resp) {
 				alert("회원가입이 완료되었습니다.");
 				// alert(resp)
-				location.href = "/blog";
+				location.href = "/";
 			}).fail(function(error) {
 				alert(JSON.stringify(error));
 			}); 
@@ -46,13 +46,13 @@ let index = {
 			
 			$.ajax({
 				type: "POST",
-				url: "/blog/api/user/login",
+				url: "/api/user/login",
 				data: JSON.stringify(data), // HTTP body 데이터
 				contentType: "application/json; charset=utf-8", // body 데이터가 어떤 타입인지
 				dataType: "json" // 요청을 통해 서버에서 응답이 왔을 때 json이라면 -> javascript 오브젝트로 변경
 			}).done(function(resp) {
 				alert("로그인이 완료되었습니다.");			
-				location.href = "/blog";
+				location.href = "/";
 			}).fail(function(error) {
 				alert(JSON.stringify(error));
 			}); 
