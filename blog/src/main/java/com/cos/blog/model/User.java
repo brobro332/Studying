@@ -36,13 +36,15 @@ public class User {
 	@Column(nullable = false, length = 100) // length 값을 크게 주는 이유 : 해쉬(비밀번호 암호화)
 	private String password;
 	
-	@Column(nullable = false, length = 50)
+	@Column(nullable = false, length = 100)
 	private String email;
 	
 	// @ColumnDefault("user")
 	// DB는 ROLE Type이라는게 없다.
 	@Enumerated(EnumType.STRING)
 	private RoleType role; // Enum을 쓰는게 좋다. // ADMIN, USER
+	
+	private String oauth; // kakao, google
 	
 	@CreationTimestamp // 시간이 자동 입력
 	private Timestamp createDate;
