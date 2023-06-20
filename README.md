@@ -3,7 +3,10 @@ Studying backend
 
 ✅ List
 - JSP & Servlet
+- Maven
 - Spring 
 - Spring MVC
-- Spring boot
-- Making Spring boot blog
+- Making Springboot blog
+- Making Springboot board
+- Springboot WebSocket
+- Android Webview
