@@ -1,5 +1,5 @@
 # Studying
-Studying backend
+To be a Backend Developer, Studying Java, Springboot, etc.
 
 ✅ List
 - JSP & Servlet
